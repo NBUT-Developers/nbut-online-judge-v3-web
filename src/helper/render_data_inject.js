@@ -6,9 +6,9 @@
  */
 "use strict";
 
-var config = require("config");
-var resp = require("express/lib/response");
-var _render = resp.render;
+let config = require("config");
+let resp = require("express/lib/response");
+let _render = resp.render;
 
 /**
  * render
@@ -18,8 +18,8 @@ var _render = resp.render;
  */
 resp.render = function(view, options, fn) {
     options = options || {};
-    var renderData = this.renderData;
-    for(var key in renderData) {
+    let renderData = this.renderData;
+    for(let key in renderData) {
         if(undefined === options[key]) {
             options[key] = renderData[key];
         }
@@ -28,8 +28,8 @@ resp.render = function(view, options, fn) {
     _render.bind(this)(view, options, fn);
 };
 
-global.oj.use(function(req, resp, next) {
-    var renderData = resp.renderData = Object.clone(config.get("render"), true);
+global.oj.use((req, resp, next) => {
+    let renderData = resp.renderData = Object.clone(config.get("render"), true);
     renderData.startTimestamp = +new Date();
     renderData.referer = req.headers.referer || "/";
     resp.nav = renderData.nav = [ { name: "Home", url: "/" } ];

@@ -13,7 +13,7 @@ clean:
 	@rm -rf node_modules
 
 test:
-	@${MOCHA_PATH} ${ARGS}
+	@NODE_ENV=test ${MOCHA_PATH} ${ARGS}
 
 lint:
 	@${JSHINT_PATH} . --config .jshintrc

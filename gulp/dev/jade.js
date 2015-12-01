@@ -6,11 +6,11 @@
  */
 "use strict";
 
-var gulp = require("gulp");
-var plugins = require("gulp-load-plugins")();
+let gulp = require("gulp");
+let plugins = require("gulp-load-plugins")();
 
-gulp.task("dev-jade", function() {
-    return gulp.src(global.SRC_PATH + "views/**/*.jade")
-        .pipe(gulp.dest(global.BUILD_PATH + "views/"))
-        .pipe(plugins.size());
-});
+gulp.task(
+    "dev-jade",
+    () => gulp.src(`${global.SRC_PATH}views/**/*.jade`)
+        .pipe(gulp.dest(`${global.BUILD_PATH}views/`))
+        .pipe(plugins.size()));

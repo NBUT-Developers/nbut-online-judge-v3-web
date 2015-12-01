@@ -6,15 +6,13 @@
  */
 "use strict";
 
-var util = require("util");
+let util = require("util");
 
 /**
  * getCtrlHelper
  * @param {String} name the helper name
  * @return {Object} the helper object
  */
-util.getCtrlHelper = function(name) {
-    return require("helper/controller/" + name.toLowerCase());
-};
+util.getCtrlHelper = name => require("helper/controller/" + name.toLowerCase());
 
 module.exports = util;

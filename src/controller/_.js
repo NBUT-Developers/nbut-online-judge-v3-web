@@ -6,7 +6,7 @@
  */
 "use strict";
 
-module.exports = function(oj) {
+module.exports = (oj) => {
     oj.get("/", function(req, resp) {
         resp.send("Hello world!");
     });

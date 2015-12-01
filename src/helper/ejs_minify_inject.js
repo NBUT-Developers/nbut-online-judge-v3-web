@@ -5,18 +5,18 @@
  * reserved.
  */
 "use strict";
-var ejs = require("ejs");
-var minify = require("html-minifier").minify;
+let ejs = require("ejs");
+let minify = require("html-minifier").minify;
 
-var logger = require("lib/logger").get("ejs-minifier");
+let logger = require("lib/logger").get("ejs-minifier");
 
 /**
  * __express
  */
-ejs.__express = function() {
-    var args = Array.prototype.slice.call(arguments);
-    var callback = args.pop();
-    args.push(function(err, data) {
+ejs.__express = (...args) => {
+    let callback = args.pop();
+
+    args.push((err, data) => {
         if(err) return callback(err);
 
         callback(null, minify(data, {

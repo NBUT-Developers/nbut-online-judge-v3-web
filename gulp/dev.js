@@ -6,7 +6,7 @@
  */
 "use strict";
 
-var gulp = require("gulp");
+let gulp = require("gulp");
 
 require("./dev/jade");
 

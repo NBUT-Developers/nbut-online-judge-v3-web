@@ -6,12 +6,10 @@
  */
 "use strict";
 
-var moment = require("moment");
-var morgan = require("morgan");
+let moment = require("moment");
+let morgan = require("morgan");
 
-morgan.token("date", function() {
-    return moment().format("YYYY-MM-DD HH:mm:ss.SSS");
-});
+morgan.token("date", () => moment().format("YYYY-MM-DD HH:mm:ss.SSS"));
 
 module.exports = morgan("[:date[YYYY]] INFO EXPRESS - ".green +
         ":remote-addr - :remote-user \":method :url HTTP/:http-version\" :status " +

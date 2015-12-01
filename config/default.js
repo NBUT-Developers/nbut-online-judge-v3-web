@@ -9,7 +9,8 @@
 module.exports = {
     server: {
         port: 8080,
-        minifyEjs: true
+        minifyEjs: true,
+        env: "dev"
     },
 
     render: {

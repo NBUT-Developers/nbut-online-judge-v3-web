@@ -6,34 +6,33 @@
  */
 "use strict";
 
-var fs = require("fs");
-var path = require("path");
-var util = require("util");
+let fs = require("fs");
+let path = require("path");
+let util = require("util");
 
-var logger = require("lib/logger").get("model-loader");
-var ROOT = __DOC_ROOT + "/src/model/";
+let logger = require("lib/logger").get("model-loader");
+let ROOT = `${__DOC_ROOT}/src/model/`;
 
-var _models = {};
+let _models = {};
 
 /**
  * load
  * @param {String} file the file path
  */
 function load(file) {
-    var directory = path.join(ROOT, file);
-    var filenames = fs.readdirSync(directory);
+    let directory = path.join(ROOT, file);
+    let filenames = fs.readdirSync(directory);
 
-    if(!global.__REPL) logger.debug("Get files in \"" + file + "\".", filenames);
-
-    for(var i = 0; i < filenames.length; i++) {
-        var stat = fs.statSync(directory + "/" + filenames[i]);
+    if(!global.__REPL) logger.debug(`Get files in "${file}".`, filenames);
+    for(let filename of filenames) {
+        let stat = fs.statSync(`${directory}/${filename}`);
         if(stat.isDirectory()) {
-            if(!global.__REPL) logger.debug("Change directory: " + file + "/" + filenames[i]);
-            load(file + "/" + filenames[i]);
+            if(!global.__REPL) logger.debug(`Change directory: ${file}/${filename}`);
+            load(`${file}/${filename}`);
         } else {
-            if(filenames[i].endsWith(".js")) {
-                var modelName = filenames[i].substr(0, filenames[i].length - 3).toLowerCase();
-                _models[modelName] = require(directory + "/" + filenames[i]);
+            if(filename.endsWith(".js")) {
+                let modelName = filename.substr(0, filename.length - 3).toLowerCase();
+                _models[modelName] = require(`${directory}/${filename}`);
             }
         }
     }
@@ -46,7 +45,7 @@ module.exports = load;
  * @param {String} name the model name
  * @return {Model} the model
  */
-util.getModel = function(name) {
+util.getModel = (name) => {
     name = name.toLowerCase();
     if(_models[name]) return _models[name];
     throw new Error("No such model " + name + ".");

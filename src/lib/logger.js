@@ -15,27 +15,27 @@ const COLORS = {
     SILLY: "grey"
 };
 
-var colors = require("colors");
-var config = require("config");
-var moment = require("moment");
-var winston = require("winston");
+let colors = require("colors");
+let config = require("config");
+let moment = require("moment");
+let winston = require("winston");
 winston.addColors(COLORS);
 
-var Logger = winston.Logger;
-var Console = winston.transports.Console;
+let Logger = winston.Logger;
+let Console = winston.transports.Console;
 
-var _loggers = {};
+let _loggers = {};
 
 /**
  * get
  * @param {String} name the logger name
  * @return {Logger} the winston log object
  */
-exports.get = function(name) {
+exports.get = name => {
     name = name.toUpperCase();
     if(_loggers[name]) return _loggers[name];
 
-    var logger = new Logger({
+    let logger = new Logger({
         transports: [
             new Console({
                 level: "silly",
@@ -44,10 +44,10 @@ exports.get = function(name) {
                 },
     
                 formatter: function(options) {
-                    var time = "[" + moment(options.timestamp()).format("YYYY-MM-DD HH:mm:ss.SSS") + "]";
-                    var level = options.level.toUpperCase();
-                    var prefix = time + " " + level + " " + name + " - ";
-                    var surfix = " " + JSON.stringify(options.meta);
+                    let time = "[" + moment(options.timestamp()).format("YYYY-MM-DD HH:mm:ss.SSS") + "]";
+                    let level = options.level.toUpperCase();
+                    let prefix = `${time} ${level} ${name} - `;
+                    let surfix = " " + JSON.stringify(options.meta);
                     if(" {}" === surfix) surfix = "";
 
                     if(COLORS[level]) {
@@ -78,19 +78,19 @@ exports.get = function(name) {
 };
 
 if(config.server.env === "dev") {
-    var __log = console.log.bind(console);
-    var toshihikoLogger = exports.get("toshihiko");
+    let __log = console.log.bind(console);
+    let toshihikoLogger = exports.get("toshihiko");
 
-    console.log = function() {
-        if(typeof arguments[0] !== "string") {
-            return __log.apply(null, arguments);
+    console.log = (...args) => {
+        if(typeof args[0] !== "string") {
+            return __log.apply(null, args);
         }
 
-        var temp = arguments[0] || "";
+        let temp = args[0] || "";
         if(temp.indexOf("❤️") === 0) {
-            toshihikoLogger.silly(arguments[0].substr(2));
+            toshihikoLogger.silly(args[0].substr(2));
         } else {
-            __log.apply(null, arguments);
+            __log.apply(null, args);
         }
     };
 }

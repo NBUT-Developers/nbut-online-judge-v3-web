@@ -6,13 +6,13 @@
  */
 "use strict";
 
-var fs = require("fs");
-var path = require("path");
+let fs = require("fs");
+let path = require("path");
 
-var express = require("express");
+let express = require("express");
 
-var logger = require("lib/logger").get("ctrl-loader");
-var ROOT = __DOC_ROOT + "/src/controller/";
+const logger = require("lib/logger").get("ctrl-loader");
+const ROOT = `${__DOC_ROOT}/src/controller/`;
 
 /**
  * loadController
@@ -20,7 +20,7 @@ var ROOT = __DOC_ROOT + "/src/controller/";
  * @param {Function} m the router function loader
  */
 function loadController(root, m) {
-    var router = express.Router({
+    let router = express.Router({
         caseSensitive: true
     });
 
@@ -41,19 +41,18 @@ function loadController(root, m) {
  * @param {String} file the file path
  */
 function load(file) {
-    var directory = path.join(ROOT, file);
-    var filenames = fs.readdirSync(directory);
+    let directory = path.join(ROOT, file);
+    let filenames = fs.readdirSync(directory);
 
-    logger.debug("Get files in \"" + file + "\".", filenames);
-    for(var i = 0; i < filenames.length; i++) {
-        var stat = fs.statSync(directory + "/" + filenames[i]);
+    logger.debug(`Get files in "${file}".`, filenames);
+    for(let filename of filenames) {
+        var stat = fs.statSync(`${directory}/${filename}`);
         if(stat.isDirectory()) {
-            logger.debug("Change directory: " + file + "/" + filenames[i]);
-            load(file + "/" + filenames[i]);
+            logger.debug(`Change directory: ${file}/${filename}`);
+            load(`${file}/${filename}`);
         } else {
-            if(filenames[i].endsWith(".js")) {
-                loadController(file + "/" + filenames[i],
-                        require(directory + "/" + filenames[i]));
+            if(filename.endsWith(".js")) {
+                loadController(`${file}/${filename}`, require(`${directory}/${filename}`));
             }
         }
     }

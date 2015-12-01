@@ -6,13 +6,13 @@
  */
 "use strict";
 
-var fs = require("fs");
-var path = require("path");
-var Module = require("module");
-var _resolveFilename = Module._resolveFilename.bind(Module);
-var cache = {};
+let fs = require("fs");
+let path = require("path");
+let Module = require("module");
+let _resolveFilename = Module._resolveFilename.bind(Module);
+let cache = {};
 
-var SRC_PATH = path.resolve(__dirname, "../");
+const SRC_PATH = path.resolve(__dirname, "../");
 
 /**
  * _resolveFilename
@@ -20,15 +20,15 @@ var SRC_PATH = path.resolve(__dirname, "../");
  * @param {Object} parent the parent object
  * @return {*} the `_resolveFilename` return value
  */
-Module._resolveFilename = function(request, parent) {
+Module._resolveFilename = (request, parent) => {
     if(!request.startsWith("./") && !request.startsWith("../")) {
         if(cache[request]) {
             request = cache[request];
         } else if(undefined === cache[request]) {
             // that is $PROJ_ROOT/src/
-            var testRequest = path.resolve(SRC_PATH, request);
+            let testRequest = path.resolve(SRC_PATH, request);
 
-            var names = [
+            let names = [
                 testRequest,
                 testRequest + ".js",
                 testRequest + ".json",
@@ -46,9 +46,9 @@ Module._resolveFilename = function(request, parent) {
              * see https://nodejs.org/api/fs.html#fs_fs_existssync_path
              */
             cache[request] = false;
-            for(var i = 0; i < names.length; i++) {
+            for(let name of names) {
                 try {
-                    if(fs.statSync(names[i]).isFile()) {
+                    if(fs.statSync(name).isFile()) {
                         request = cache[request] = testRequest;
                         break;
                     }
