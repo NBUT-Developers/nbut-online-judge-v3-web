@@ -1,0 +1,47 @@
+//
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>页面未找到 - 宁波工程学院在线评测系统</title>
+        <link href="http://fonts.useso.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+        <style>
+        body { background: #7abecc; text-shadow: 2px 2px 0 #64b1c6; color: #fff; font-family: "Roboto", sans-serif; }
+        h1 { color: #d2edf7; text-align: center; font-size: 224px; font-family: "Roboto", sans-serif; margin-bottom: 0px; padding-bottom: 10px; line-height: 224px; }
+        h2 { text-align: center; font-size: 48px; font-family: "Roboto", sans-serif; margin-top: 10px; line-height: 48px; }
+        p.content, p.content a { font-size: 16px; text-align: center; font-family: "Roboto", sans-serif; color: #fff; }
+        p.copyright { font-size: 12px; text-align: center; font-family: "Roboto", sans-serif; }
+        </style>
+    </head>
+    <body>
+        <h1>404</h1>
+        <h2>PAGE NOT FOUND</h2>
+    
+        <p class="content">The page you are looking for either doesn't exist or is not here anymore. Click <a href="http://ac.2333.moe/">here</a> to go back to the home page</p>
+    
+        <p class="copyright">&copy; ac.2333.com <%= (new Date()).getFullYear() %>. Powered by Ningbo University of Techonology Online Judge System (宁波工程学院在线评测系统) v<%= version %></p> 
+    </body>
+    </html>
+doctype html
+html(lang="zh-CN")
+    head
+        meta(charset="utf8")
+        title 页面未找到 - 宁波工程学院在线评测幻想乡
+        link(href="http://fonts.useso.com/css?family=Roboto" rel="stylesheet" type="text/css")
+        style.
+            body { background: #7abecc; text-shadow: 2px 2px 0 #64b1c6; color: #fff; font-family: "Roboto", sans-serif; }
+            h1 { color: #d2edf7; text-align: center; font-size: 224px; font-family: "Roboto", sans-serif; margin-bottom: 0px; padding-bottom: 10px; line-height: 224px; }
+            h2 { text-align: center; font-size: 48px; font-family: "Roboto", sans-serif; margin-top: 10px; line-height: 48px; }
+            p.content, p.content a { font-size: 16px; text-align: center; font-family: "Roboto", sans-serif; color: #fff; }
+            p.copyright { font-size: 12px; text-align: center; font-family: "Roboto", sans-serif; }
+    body
+        h1 404
+        h2 PAGE NOT FOUND
+        p.content
+            | The page you are looking for either doesn't exist or is not here anymore. Click <a href="http://ac.2333.moe/">here</a> to go back to the home page
+        p.copyright
+            | &copy; ac.2333.com
+            = " " + (new Date()).getFullYear()
+            | . Powered by Ningbo University of Techonology Online Judge System
+            | (宁波工程学院在线评测幻想乡) v
+            = version

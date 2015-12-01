@@ -30,8 +30,11 @@ oj.use("/", function(req, resp) {
     arguments[2]();
 });
 
-// using EJS
-oj.set("view engine", "ejs");
+// inject for the render data
+require("helper/render_data_inject");
+
+// using Jade
+oj.set("view engine", "jade");
 oj.set("views", __DOC_ROOT + "/f2e/build/views/");
 
 oj.use(require("lib/morgan"));

@@ -27,8 +27,13 @@ function loadController(root, m) {
     // load functions to `router` object
     m(router);
 
+    root = root.substr(0, root.length - 3);
+    if(root.endsWith("/_")) {
+        root = root.substr(0, root.length - 2);
+    }
+
     // add `router` to the express instance
-    global.oj.use(root.substr(0, root.length - 3), router);
+    global.oj.use(root, router);
 }
 
 /**

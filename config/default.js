@@ -8,6 +8,12 @@
 
 module.exports = {
     server: {
-        port: 8080
+        port: 8080,
+        minifyEjs: true
+    },
+
+    render: {
+        title: "宁波工程学院在线评测幻想乡",
+        baseUrl: "http://127.0.0.1:8080/"
     }
 };
