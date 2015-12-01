@@ -1,0 +1,22 @@
+{
+  "name": "nbut-online-judge-v3-web",
+  "version": "1.0.0",
+  "authors": [
+    "XadillaX <admin@xcoder.in>"
+  ],
+  "description": "Ningbo University of Technology Online Judge System V3 Web.",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "http://ac.2333.moe/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "semantic": "~2.1.6"
+  }
+}
