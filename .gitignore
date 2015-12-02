@@ -29,6 +29,7 @@ node_modules
 # OJ...
 *.swp
 f2e/build
+f2e/dev
 bower_components
 config/*
 !config/default.js
