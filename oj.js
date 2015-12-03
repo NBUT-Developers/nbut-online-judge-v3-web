@@ -38,10 +38,10 @@ require("helper/render_data_inject");
 // using Jade
 oj.set("view engine", "jade");
 
-if("prod" === config.get("server.env")) {
-    oj.set("views", `${__DOC_ROOT}/f2e/src/views/`);
-} else {
+if(config.get("server.env") === "prod") {
     oj.set("views", `${__DOC_ROOT}/f2e/build/views/`);
+} else {
+    oj.set("views", `${__DOC_ROOT}/f2e/dev/views/`);
 }
 
 // use morgan logger
