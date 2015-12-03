@@ -7,6 +7,7 @@
 "use strict";
 
 global.SRC_PATH = "./f2e/src/";
+global.DEV_PATH = "./f2e/dev/";
 global.BUILD_PATH = "./f2e/build/";
 
 require("./gulp/dev");

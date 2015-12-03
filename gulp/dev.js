@@ -9,7 +9,13 @@
 let gulp = require("gulp");
 
 require("./dev/jade");
+require("./dev/bower_components")
 
 gulp.task("build-dev", [
-    "dev-jade"
+    "dev-jade",
+    "dev-bower-components"
 ]);
+
+gulp.task("watch", [ "build-dev" ], () => {
+    gulp.watch(`${global.SRC_PATH}views/**/*.jade`, [ "dev-jade" ]);
+});

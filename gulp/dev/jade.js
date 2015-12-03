@@ -12,5 +12,5 @@ let plugins = require("gulp-load-plugins")();
 gulp.task(
     "dev-jade",
     () => gulp.src(`${global.SRC_PATH}views/**/*.jade`)
-        .pipe(gulp.dest(`${global.BUILD_PATH}views/`))
+        .pipe(gulp.dest(`${global.DEV_PATH}views/`))
         .pipe(plugins.size()));
