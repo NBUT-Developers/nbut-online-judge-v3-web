@@ -9,7 +9,7 @@
 let gulp = require("gulp");
 
 require("./dev/jade");
-require("./dev/bower_components")
+require("./dev/bower_components");
 
 gulp.task("build-dev", [
     "dev-jade",
