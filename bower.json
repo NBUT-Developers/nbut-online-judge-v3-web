@@ -17,6 +17,8 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "semantic": "~2.1.6"
+    "semantic": "~2.1.6",
+    "jquery-backstretch": "~2.0.4",
+    "particles.js": "~2.0.0"
   }
 }
