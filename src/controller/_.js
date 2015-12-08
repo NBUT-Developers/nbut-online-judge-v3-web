@@ -6,8 +6,14 @@
  */
 "use strict";
 
+let particles = require("const/particles");
+
 module.exports = (oj) => {
     oj.get("/", (req, resp) => {
         resp.render("index");
+    });
+
+    oj.get("/particles", (req, resp) => {
+        resp.send(particles);
     });
 };
