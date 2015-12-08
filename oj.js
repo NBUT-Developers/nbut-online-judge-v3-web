@@ -40,8 +40,10 @@ oj.set("view engine", "jade");
 
 if(config.get("server.env") === "prod") {
     oj.set("views", `${__DOC_ROOT}/f2e/build/views/`);
+    oj.use(express.static(`${__DOC_ROOT}/f2e/build/assets/`));
 } else {
     oj.set("views", `${__DOC_ROOT}/f2e/dev/views/`);
+    oj.use(express.static(`${__DOC_ROOT}/f2e/dev/assets/`));
 }
 
 // use morgan logger
