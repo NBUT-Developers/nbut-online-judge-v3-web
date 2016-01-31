@@ -33,3 +33,4 @@ f2e/dev
 bower_components
 config/*
 !config/default.js
+gulp.bak
