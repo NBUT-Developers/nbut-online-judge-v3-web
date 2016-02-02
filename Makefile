@@ -27,4 +27,4 @@ dev:
 watch:
 	@${GULP_PATH} watch
 
-.PHONY: test clean-dev
+.PHONY: test clean-dev watch
