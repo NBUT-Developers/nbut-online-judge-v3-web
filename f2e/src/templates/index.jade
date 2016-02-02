@@ -40,10 +40,17 @@ html(lang="zh-CN")
                                 br
                                 | User
 
-                // div.right.menu
-                //     div.item
-                //         img.ui.avatar.image(src="http://img.wdjimg.com/mms/icon/v1/f/cb/4206662397129f26dc9e474ba5db5cbf_256_256.png")
+                    div.navbar-right
+                        img.img-circle(src="http://img.wdjimg.com/mms/icon/v1/f/cb/4206662397129f26dc9e474ba5db5cbf_256_256.png")
         div#particles 
+
+        footer.footer
+            div.container
+                p.text-muted Ningbo University of Technology Online Judge System v3
+                p.text-muted
+                    | &copy; !{new Date().getFullYear()}&nbsp;
+                    a(href="https://github.com/NBUT-Developers" target="_blank") NBUT Developers
+                    | &nbsp;all rights reserved.
 
         script(src="/third_party/jquery/dist/jquery.js")
         script(src="/third_party/jquery-backstretch/src/jquery.backstretch.js")
