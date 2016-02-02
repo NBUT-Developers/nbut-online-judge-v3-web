@@ -7,23 +7,22 @@
 "use strict";
 
 require("sugar");
-let config = require("config");
-let bodyParser = require("body-parser");
-let express = require("express");
+const config = require("config");
+const bodyParser = require("body-parser");
+const express = require("express");
 
-let oj = global.oj = module.exports = express();
-
-const PORT = config.get("server.port");
-
-oj.use(bodyParser.json({ limit: "1000kb" }));
-oj.use(bodyParser.urlencoded({ extended: true, limit: "1000kb" }));
-
-let pkg = require("./package");
+const pkg = require("./package");
 global.__DOC_ROOT = __dirname;
 global.__VERSION = pkg.version;
 require("./src/lib/require");
 
-let logger = require("lib/logger").get("oj-entry");
+const logger = require("lib/logger").get("oj-entry");
+
+const PORT = config.get("server.port");
+const oj = global.oj = module.exports = express();
+
+oj.use(bodyParser.json({ limit: "1000kb" }));
+oj.use(bodyParser.urlencoded({ extended: true, limit: "1000kb" }));
 
 oj.use((req, resp, next) => {
     resp.set(
@@ -39,10 +38,10 @@ require("helper/render_data_inject");
 oj.set("view engine", "jade");
 
 if(config.get("server.env") === "prod") {
-    oj.set("views", `${__DOC_ROOT}/f2e/build/views/`);
+    oj.set("views", `${__DOC_ROOT}/f2e/build/templates/`);
     oj.use(express.static(`${__DOC_ROOT}/f2e/build/assets/`));
 } else {
-    oj.set("views", `${__DOC_ROOT}/f2e/dev/views/`);
+    oj.set("views", `${__DOC_ROOT}/f2e/src/templates/`);
     oj.use(express.static(`${__DOC_ROOT}/f2e/dev/assets/`));
 }
 

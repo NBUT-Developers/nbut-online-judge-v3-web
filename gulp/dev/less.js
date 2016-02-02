@@ -1,23 +1,23 @@
 /**
- * XadillaX created at 2015-12-05 15:57:39 With ♥
+ * XadillaX created at 2016-02-02 14:25:25 With ♥
  *
- * Copyright (c) 2015 Souche.com, all rights
+ * Copyright (c) 2016 Souche.com, all rights
  * reserved.
  */
 "use strict";
 
-let path = require("path");
+const gulp = require("gulp");
+const plugins = require("gulp-load-plugins")();
 
-let gulp = require("gulp");
-let plugins = require("gulp-load-plugins")();
+const config = require("../config");
 
-gulp.task(
-    "dev-less",
-    () => gulp.src(`${global.SRC_PATH}assets/less/**/*.less`)
+gulp.task("less_dev", () => {
+    gulp.src(`${config.srcAssetsPath}/less/**/*.less`)
         .pipe(plugins.less({
             paths: [
-                path.join(__dirname, "../../f2e/src/assets/", "less", "includes")
+                `${config.srcAssetsPath}/less/includes`
             ]
         }))
-        .pipe(gulp.dest(`${global.DEV_PATH}assets/css`))
-        .pipe(plugins.size()));
+        .pipe(gulp.dest(`${config.devAssetsPath}/css`))
+        .pipe(plugins.size());
+});

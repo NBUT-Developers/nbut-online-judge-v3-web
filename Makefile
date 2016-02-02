@@ -12,16 +12,19 @@ install:
 clean:
 	@rm -rf node_modules
 
+clean-dev:
+	@rm -rf f2e/dev && echo "Cleaned."
+
 test:
 	@NODE_ENV=test ${MOCHA_PATH} ${ARGS}
 
 lint:
 	@${JSHINT_PATH} . --config .jshintrc
 
-build-dev:
-	@${GULP_PATH} build-dev
+dev:
+	@${GULP_PATH} dev
 
-rebuild-dev:
-	@rm -rf f2e/build && ${GULP_PATH} build-dev
+watch:
+	@${GULP_PATH} watch
 
-.PHONY: test
+.PHONY: test clean-dev

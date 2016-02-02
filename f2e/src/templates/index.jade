@@ -1,0 +1,55 @@
+doctype html
+html(lang="zh-CN")
+    head
+        meta(charset="utf8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+        title 宁波工程学院在线评测幻想乡
+        link(rel="stylesheet" type="text/css" href="/css/bootstrap.css")
+        link(rel="stylesheet" type="text/css" href="/css/homepage.css")
+    body
+        div.navbar.navbar-inverse.navbar-fixed-top
+            div.container
+                div.navbar-header
+                    a.navbar-brand(href="/") 宁波工程学院在线评测幻想乡
+                div.collapse.navbar-collapse#navbar
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href="/")
+                                | 首页
+                                br
+                                | Home
+                        li
+                            a(href="#")
+                                | 题库
+                                br
+                                | Problem
+                        li
+                            a(href="#")
+                                | 状态
+                                br
+                                | Status
+                        li
+                            a(href="#")
+                                | 比赛
+                                br
+                                | Contest
+                        li
+                            a(href="#")
+                                | 用户
+                                br
+                                | User
+
+                // div.right.menu
+                //     div.item
+                //         img.ui.avatar.image(src="http://img.wdjimg.com/mms/icon/v1/f/cb/4206662397129f26dc9e474ba5db5cbf_256_256.png")
+        div#particles 
+
+        script(src="/third_party/jquery/dist/jquery.js")
+        script(src="/third_party/jquery-backstretch/src/jquery.backstretch.js")
+        script.
+            $.backstretch("/images/homepage_bg.jpg");
+
+        script(src="/third_party/particles.js/particles.js")
+        script.
+            particlesJS.load("particles", "/particles");

@@ -28,8 +28,8 @@ function loadController(root, m) {
     m(router);
 
     root = root.substr(0, root.length - 3);
-    if(root.endsWith("/_")) {
-        root = root.substr(0, root.length - 2);
+    if(root.endsWith("/index")) {
+        root = root.substr(0, root.length - 6);
     }
 
     // add `router` to the express instance
