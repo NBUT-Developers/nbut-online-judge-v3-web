@@ -20,11 +20,15 @@
   },
   "homepage": "https://github.com/XadillaX/nbut-online-judge-v3-web#readme",
   "dependencies": {
+    "async": "^1.5.2",
     "body-parser": "^1.14.1",
     "colors": "^1.1.2",
     "config": "^1.17.1",
+    "cookie-parser": "^1.4.1",
     "ejs": "^2.3.4",
+    "exmcached-session": "^1.1.1",
     "express": "^4.13.3",
+    "express-session": "^1.13.0",
     "gulp-load-plugins": "^1.1.0",
     "gulp-size": "^2.0.0",
     "html-minifier": "^1.0.0",
@@ -32,6 +36,7 @@
     "moment": "^2.10.6",
     "morgan": "^1.6.1",
     "sugar": "^1.4.1",
+    "toshihiko": "^0.7.2",
     "winston": "^2.1.1"
   },
   "devDependencies": {
