@@ -9,8 +9,27 @@
 module.exports = {
     server: {
         port: 8080,
-        minifyEjs: true,
         env: "dev"
+    },
+
+    session: {
+        secret: "!@#$%^&*()_+|~",
+        key: "boom-shakalaka",
+
+        // memcached...
+        hosts: "127.0.0.1:11211",
+        prefix: "ojs_"
+    },
+
+    mysql: {
+        database: "onlinejudge",
+        username: "root",
+        password: "",
+
+        host: "127.0.0.1",
+        port: 3306,
+        connectionLimit: 10,
+        charset: "utf8mb4_bin"
     },
 
     render: {
