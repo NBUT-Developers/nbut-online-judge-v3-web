@@ -8,8 +8,12 @@
 
 require("sugar");
 const config = require("config");
+const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const express = require("express");
+const session = require("express-session");
+
+const Exmcached = require("exmcached-session")(session);
 
 const pkg = require("./package");
 global.__DOC_ROOT = __dirname;
@@ -44,6 +48,16 @@ if(config.get("server.env") === "prod") {
     oj.set("views", `${__DOC_ROOT}/f2e/src/templates/`);
     oj.use(express.static(`${__DOC_ROOT}/f2e/dev/assets/`));
 }
+
+oj.use(cookieParser());
+oj.use(session({
+    secret: config.session.secret,
+    key: config.session.key,
+    store: new Exmcached({
+        hosts: config.session.hosts,
+        prefix: config.session.prefix
+    })
+}));
 
 // use morgan logger
 oj.use(require("lib/morgan"));
