@@ -10,6 +10,7 @@ let particles = require("const/particles");
 
 module.exports = (oj) => {
     oj.get("/", (req, resp) => {
+        resp.renderData.pageType = "home";
         resp.render("index");
     });
 
