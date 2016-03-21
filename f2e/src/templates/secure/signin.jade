@@ -1,2 +1,15 @@
 extends ../public/layout.jade
 block content
+    div.row
+        div.col-md-offset-4.col-md-4
+            div.panel.panel-warning#login-panel
+                div.panel-heading 赶紧登陆我
+                div.panel-body
+                    form
+                        div.form-group
+                            label(for="username") 用户名
+                            input.form-control#username(type="text" placeholder="Nyan~")
+                        div.form-group
+                            label(for="password") 密码
+                            input.form-control#password(type="password" placeholder="Boom~")
+                        button.btn.btn-default(type="button") 登陆

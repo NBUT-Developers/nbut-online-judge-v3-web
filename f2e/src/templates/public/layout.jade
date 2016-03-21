@@ -6,7 +6,7 @@ html(lang="zh-CN")
         meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
         title 宁波工程学院在线评测幻想乡
         link(rel="stylesheet" type="text/css" href="/css/bootstrap.css")
-        link(rel="stylesheet" type="text/css" href="/css/homepage.css")
+        link(rel="stylesheet" type="text/css" href="/css/#{cssName || 'homepage'}.css")
     body
         div.navbar.navbar-inverse.navbar-fixed-top
             div.container
@@ -53,7 +53,8 @@ html(lang="zh-CN")
                             a.btn.btn-danger(href="/secure/signup") 注册
                             a.btn.btn-warning(href="/secure/signin") 登录
 
-        block content
+        div.container(style="margin-top: 80px;")
+            block content
 
         footer.footer
             div.container

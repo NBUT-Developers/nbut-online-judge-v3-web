@@ -6,9 +6,11 @@
  */
 "use strict";
 
-let config = require("config");
-let resp = require("express/lib/response");
-let _render = resp.render;
+const path = require("path");
+
+const config = require("config");
+const resp = require("express/lib/response");
+const _render = resp.render;
 
 /**
  * render
@@ -17,7 +19,9 @@ let _render = resp.render;
  * @param {Function} [fn] the render function
  */
 resp.render = function(view, options, fn) {
-    options = options || {};
+    options = options || {
+        cssName: path.basename(view)
+    };
     let renderData = this.renderData;
     for(let key in renderData) {
         if(undefined === options[key]) {
