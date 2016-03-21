@@ -11,8 +11,15 @@ html(lang="zh-CN")
         div.navbar.navbar-inverse.navbar-fixed-top
             div.container
                 div.navbar-header
+                    button.navbar-toggle.collapsed(type="button" data-toggle="collapse"
+                        data-target="#navbar-collapse" aria-expanded="false")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
                     a.navbar-brand(href="/") 宁波工程学院在线评测幻想乡
-                div.collapse.navbar-collapse#navbar
+
+                div.collapse.navbar-collapse#navbar-collapse
                     ul.nav.navbar-nav
                         li#nav-item-home
                             a(href="/")
@@ -58,6 +65,8 @@ html(lang="zh-CN")
 
         script(src="/third_party/jquery/dist/jquery.js")
         script(src="/third_party/jquery-backstretch/src/jquery.backstretch.js")
+        script(src="/js/bootstrap.js")
+
         script.
             $(function() {
                 $.backstretch("/images/homepage_bg.jpg");
@@ -68,6 +77,4 @@ html(lang="zh-CN")
                     $("#nav-item-!{pageType}").addClass("active");
                 });
 
-        script(src="/third_party/particles.js/particles.js")
-        script.
-            particlesJS.load("particles", "/particles");
+        block javascript

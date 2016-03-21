@@ -1,3 +1,8 @@
 extends ./public/layout.jade
 block content
     div#particles
+
+block javascript
+    script(src="/third_party/particles.js/particles.js")
+    script.
+        particlesJS.load("particles", "/particles");
