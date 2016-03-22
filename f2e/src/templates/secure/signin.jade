@@ -12,4 +12,36 @@ block content
                         div.form-group
                             label(for="password") 密码
                             input.form-control#password(type="password" placeholder="Boom~")
-                        button.btn.btn-default(type="button") 登陆
+                        button.btn.btn-default#login(type="submit") 登陆
+
+block javascript
+    script.
+        function login() {
+            var username = $("#username").val();
+            var password = $("#password").val();
+            $.post("/signin", {
+                username: username,
+                password: password
+            }, function(cont) {
+                if(typeof cont === "string") {
+                    return swal("呀！", "未知登录错误。", "error");
+                }
+
+                if(cont && cont.status === 200) {
+                    return (window.location.href = "/");
+                } else if(cont && cont.message) {
+                    return swal("呀！", cont.message, "error");
+                }
+
+                return swal("呀！", "未知登录错误。", "error");
+            }).fail(function(xhr, textStatus, err) {
+                swal("呀！", textStatus + ": " + err, "error");
+            });
+        }
+
+        $(function() {
+            $("form").submit(function() {
+                login();
+                return false;
+            });
+        });

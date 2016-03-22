@@ -10,7 +10,7 @@ module.exports = {
     srcPath: "./f2e/src",
     srcAssetsPath: "./f2e/src/assets",
     srcBowerPath: "./bower_components",
-    srcBowerCommon: "{jquery,jquery-backstretch,particles.js}",
+    srcBowerCommon: "{jquery,jquery-backstretch,particles.js,sweetalert}",
 
     devPath: "./f2e/dev",
     devAssetsPath: "./f2e/dev/assets",
