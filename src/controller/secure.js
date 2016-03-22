@@ -6,7 +6,11 @@
  */
 "use strict";
 
+const util = require("util");
+
 const auth = require("middleware/auth");
+
+const User = util.getModel("user");
 
 module.exports = (oj) => {
     oj.use(auth());
@@ -17,6 +21,25 @@ module.exports = (oj) => {
         }
 
         resp.render("secure/signin");
+    });
+
+    oj.post("/signin", (req, resp) => {
+        const username = req.body.username;
+        const password = req.body.password;
+
+        User.checkLogin(username, password, function(err, user) {
+            if(err) {
+                return resp.send({
+                    status: 500,
+                    message: err.message
+                });
+            }
+
+            req.session.userId = user.userId;
+            return resp.send({
+                status: 200
+            });
+        });
     });
 
     oj.get("/easter_egg", auth(true), (req, resp) => {

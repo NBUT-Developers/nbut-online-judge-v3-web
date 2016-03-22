@@ -33,6 +33,7 @@
     "gulp-size": "^2.0.0",
     "html-minifier": "^1.0.0",
     "jade": "^1.11.0",
+    "md5-hex": "^1.2.1",
     "moment": "^2.10.6",
     "morgan": "^1.6.1",
     "sugar": "^1.4.1",

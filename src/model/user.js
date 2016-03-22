@@ -6,9 +6,11 @@
  */
 "use strict";
 
+const md5 = require("md5-hex");
+
 const toshihiko = require("lib/toshihiko");
 
-var User = toshihiko.define("oj_user", [
+let User = toshihiko.define("oj_user", [
     { name: "userId", column: "userid", type: toshihiko.TYPE.Integer, primaryKey: true },
     { name: "username", type: toshihiko.TYPE.String },
     { name: "password", type: toshihiko.TYPE.String },
@@ -31,5 +33,30 @@ var User = toshihiko.define("oj_user", [
 
     { name: "createdAt", column: "regtime", type: toshihiko.TYPE.Integer },
 ]);
+
+User.checkLogin = function(username, password, callback) {
+    username = (username || "").substr(0, 16);
+    password = md5(password || "");
+
+    let cond = {};
+    if(username.match(/^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+$/)) {
+        cond.email = username;
+    } else {
+        cond.username = username;
+    }
+
+    this.where(cond).findOne((err, user) => {
+        if(err) return callback(err);
+        if(!user) {
+            return callback(new Error("不存在的用户。"));
+        }
+
+        if(user.password !== password) {
+            return callback(new Error("密码错误。"));
+        }
+
+        callback(undefined, user);
+    });
+};
 
 module.exports = User;

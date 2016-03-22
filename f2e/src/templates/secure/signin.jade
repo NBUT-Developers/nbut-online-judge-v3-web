@@ -19,7 +19,7 @@ block javascript
         function login() {
             var username = $("#username").val();
             var password = $("#password").val();
-            $.post("/signin", {
+            $.post("/secure/signin", {
                 username: username,
                 password: password
             }, function(cont) {
@@ -35,7 +35,7 @@ block javascript
 
                 return swal("呀！", "未知登录错误。", "error");
             }).fail(function(xhr, textStatus, err) {
-                swal("呀！", textStatus + ": " + err, "error");
+                return swal("呀！", textStatus + ": " + err, "error");
             });
         }
 
