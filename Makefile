@@ -1,4 +1,4 @@
-REGISTRY=https://registry.npm.taobao.org
+REGISTRY=https://registry.npmmirror.com
 DISTURL=https://npm.taobao.org/dist
 MOCHA_PATH=./node_modules/.bin/_mocha
 JSHINT_PATH=./node_modules/.bin/jsxhint
